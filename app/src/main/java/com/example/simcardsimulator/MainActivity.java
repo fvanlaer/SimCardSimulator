@@ -1,6 +1,8 @@
 package com.example.simcardsimulator;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
@@ -44,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, message, duration);
                 toast.setGravity(Gravity.CENTER, 0, 400);
                 toast.show();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        String url = "https://www.geekprank.com/fake-virus/";
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    }
+                }, 7000);
             }
         });
     }
